@@ -7,7 +7,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="shell-command-launcher",
-    version="1.0.0",
+    version="1.0.1",
     description="A simple tool to launch shell command many times.",
     long_description=long_description,
     long_description_content_type="text/markdown",

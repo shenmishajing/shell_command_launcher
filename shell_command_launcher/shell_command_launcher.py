@@ -28,11 +28,11 @@ def iter_arg_dict(arg_dict, keys=None, cur_arg_dict=None):
 def single_command_launcher(
     command: str, log_dir: str = None, num: int = 1, sleep_time: float = 0, tasks=None
 ):
-    if num == 1:
-        name = os.path.basename(log_dir)
-        log_dir = os.path.dirname(log_dir)
-
-    os.makedirs(log_dir, exist_ok=True)
+    if log_dir is not None:
+        if num == 1:
+            name = os.path.basename(log_dir)
+            log_dir = os.path.dirname(log_dir)
+        os.makedirs(log_dir, exist_ok=True)
 
     for num_ind in range(num):
         print(f"running command: {command}, num: {num_ind+1}/{num}")

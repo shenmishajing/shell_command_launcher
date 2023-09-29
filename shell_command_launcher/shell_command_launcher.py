@@ -26,12 +26,7 @@ def iter_arg_dict(arg_dict, keys=None, cur_arg_dict=None):
 
 
 def single_command_launcher(
-    command: str,
-    log_dir: str = None,
-    num: int = 1,
-    sleep_time: float = 0,
-    tasks=None,
-    **kwargs,
+    command: str, log_dir: str = None, num: int = 1, sleep_time: float = 0, tasks=None
 ):
     if num == 1:
         name = os.path.basename(log_dir)
@@ -54,7 +49,7 @@ def single_command_launcher(
 
         tasks.append(
             subprocess.Popen(
-                command, **kwargs, stdout=stdout, stderr=subprocess.STDOUT, shell=True
+                command, stdout=stdout, stderr=subprocess.STDOUT, shell=True
             )
         )
 
@@ -71,7 +66,7 @@ def shell_command_launcher(
     log_dir: str = None,
     num: int = 1,
     parallel_num: int = 1,
-    **kwargs,
+    sleep_time: float = 0,
 ):
     parallel_num = max(1, parallel_num)
     tasks = deque(maxlen=parallel_num)
@@ -91,13 +86,21 @@ def shell_command_launcher(
                 else:
                     cur_log_dir = None
                 single_command_launcher(
-                    cur_command, cur_log_dir, num, tasks=tasks, **kwargs
+                    cur_command, cur_log_dir, num, sleep_time, tasks=tasks
                 )
         else:
-            single_command_launcher(command, log_dir, name, num, tasks=tasks, **kwargs)
+            single_command_launcher(command, log_dir, num, sleep_time, tasks=tasks)
     except KeyboardInterrupt:
-        for t in tasks:
-            t.terminate()
+        try:
+            print(
+                "detect Ctrl-C pressed, try to terminate all tasks gracefully, press Ctrl-C again to force kill all tasks"
+            )
+            for t in tasks:
+                t.terminate()
+        except KeyboardInterrupt:
+            print("force kill all tasks")
+            for t in tasks:
+                t.kill()
     else:
         for t in tasks:
             t.wait()

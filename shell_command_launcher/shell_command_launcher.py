@@ -78,7 +78,7 @@ def shell_command_launcher(
                     arg_dict[arg] = arg_dict[arg].split(",")
 
             for args in iter_arg_dict(arg_dict):
-                cur_command = Template(command).substitute(args)
+                cur_command = Template(command).safe_substitute(args)
                 if log_dir is not None:
                     keys = sorted(args.keys())
                     name = "__".join([f"{key}_{args[key]}" for key in keys])

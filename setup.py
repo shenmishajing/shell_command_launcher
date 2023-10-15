@@ -7,7 +7,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="shell-command-launcher",
-    version="1.0.5",
+    version="1.0.6",
     description="A simple tool to launch shell command many times.",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -20,7 +20,7 @@ setup(
     },
     python_requires=">=3.7",
     install_requires=[
-        "jsonargparse[all]",
+        "jsonargparse",
     ],
     license="MIT License",
     packages=find_packages(),  # 包

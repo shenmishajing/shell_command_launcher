@@ -1,1 +1,1 @@
-jsonargparse[all]
+jsonargparse

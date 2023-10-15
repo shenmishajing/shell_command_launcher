@@ -3,7 +3,7 @@ import subprocess
 import time
 from collections import deque
 from string import Template
-from typing import Union
+from typing import Dict, List, Union
 
 from jsonargparse import CLI
 
@@ -62,7 +62,7 @@ def single_command_launcher(
 
 def shell_command_launcher(
     command: str,
-    arg_dict: dict[str, Union[list, str]] = None,
+    arg_dict: Dict[str, Union[List, str]] = None,
     log_dir: str = None,
     num: int = 1,
     parallel_num: int = 1,

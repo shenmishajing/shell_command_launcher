@@ -45,7 +45,7 @@ extensions = [
 ]
 
 autoapi_dirs = ["../shell_command_launcher"]
-# autoapi_add_toctree_entry = False
+autoapi_add_toctree_entry = False
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

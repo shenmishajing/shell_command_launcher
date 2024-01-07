@@ -1,4 +1,4 @@
-## Shell Command Launcher
+# Shell Command Launcher
 
 A simple tool to launch shell command many times.
 

@@ -2,34 +2,41 @@
 
 A simple tool to launch shell command many times.
 
-### Args
+## Installation
 
-#### command
+```bash
+pip install shell-command-launcher
+```
 
-The command to run, which is a string. You can use `$<var_name>` or `${<var_name>}` to represent a var defined in arg_dict. For details, see the [template doc](https://docs.python.org/3/library/string.html#template-strings).
+## Contribution
 
-#### arg_dict
+See [contribution docs](docs/get_started/contribution.md) for details.
 
-A dict of args to replace the var in cmd. The key is the var name, and the value is a list of the var value.
+## Release versions
 
-The command will run with all combinations of the var values.
+We use [setuptools_scm](https://github.com/pypa/setuptools_scm/) for versioning. For the versions available, see the [tags](https://github.com/shenmishajing/lightning_template/tags) on this repository.
 
-#### log_dir
+## License
 
-The dir to save the log file. If set, the output of each command will be saved in `log_dir/<var_name1>_<var_value1>__<var_name2>_<var_value2>...__<var_namen>_<var_valuen>.log`.
+This project is licensed under the MIT License.
 
-#### num
+## Star History
 
-The number of times to run the same command. If set, each command will run `num` times. If `log_dir` is also set, the output of each command will be saved in `log_dir/<var_name1>_<var_value1>__<var_name2>_<var_value2>...__<var_namen>_<var_valuen>_<num>.log`.
-
-#### parallel_num
-
-The number of tasks to run in parallel. If set, we will run `parallel_num` tasks in parallel.
-
-#### sleep_time
-
-The sleep time in seconds between each command, `0` by default. We will sleep `sleep_time` seconds between each command.
-
-#### other args
-
-Other args will be passed to `subprocess.Popen` as kwargs. For details, see the [doc](https://docs.python.org/3/library/subprocess.html#popen-constructor).
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=shenmishajing/shell_command_launcher&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=shenmishajing/shell_command_launcher&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=shenmishajing/shell_command_launcher&type=Date"
+  />
+</picture>
